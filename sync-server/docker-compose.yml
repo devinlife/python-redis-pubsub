@@ -14,13 +14,13 @@ services:
       - ./redis/conf/redis.conf:/usr/local/conf/redis.conf
   sync-server-pub:
     build:
-      context: ./sync-server
+      context: .
       dockerfile: Dockerfile.publisher
     depends_on:
       - redis
   sync-server-sub:
     build:
-      context: ./sync-server
+      context: .
       dockerfile: Dockerfile.subscriber
     depends_on:
       - redis
