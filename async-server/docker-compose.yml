@@ -1,0 +1,27 @@
+# 파일 규격 버전
+version: "3"
+
+# 실행하려는 컨테이너들 정의
+services:  
+  # 서비스명
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - 6379:6379
+    volumes:
+      - ./redis/data:/data
+      - ./redis/conf/redis.conf:/usr/local/conf/redis.conf
+  async-server-pub:
+    build:
+      context: .
+      dockerfile: Dockerfile.publisher
+    depends_on:
+      - redis
+  async-server-sub:
+    build:
+      context: .
+      dockerfile: Dockerfile.subscriber
+    depends_on:
+      - redis
+      - async-server-pub
