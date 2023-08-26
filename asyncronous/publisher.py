@@ -8,7 +8,7 @@ async def async_pub():
     """
     Publish a message to channel:1 every 3 seconds.
     """
-    async with redis.from_url("redis://redis:6379") as r:
+    async with redis.Redis(host='redis', port=6379) as r:
         try:
             while True:
                 message = f"send mesagge : {time.time()}"

@@ -12,16 +12,15 @@ services:
     volumes:
       - ./redis/data:/data
       - ./redis/conf/redis.conf:/usr/local/conf/redis.conf
-  async-server-pub:
+  synchronous-pub:
     build:
       context: .
       dockerfile: Dockerfile.publisher
     depends_on:
       - redis
-  async-server-sub:
+  synchronous-sub:
     build:
       context: .
       dockerfile: Dockerfile.subscriber
     depends_on:
       - redis
-      - async-server-pub

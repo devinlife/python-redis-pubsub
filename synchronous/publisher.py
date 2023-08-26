@@ -2,7 +2,7 @@
 import time
 import redis
 
-r = redis.Redis(host='redis', port=6379, db=0)
+r = redis.Redis(host='redis', port=6379)
 
 while True:
     message = f"send mesagge : {time.time()}"

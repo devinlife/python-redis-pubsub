@@ -11,7 +11,7 @@ import time
 # redis_url = "redis://redis:6379/0"
 
 # 위 코드는 Redis 서비스의 이름을 "redis"로 사용하며, 동일한 Docker Compose 네트워크 내에서는 해당 서비스의 컨테이너로의 연결을 설정합니다. 이렇게 하면 컨테이너 내부에서 실행되는 코드가 Redis 서비스의 컨테이너로 올바르게 연결됩니다.
-r = redis.Redis(host="redis", port=6379, db=0)
+r = redis.Redis(host="redis", port=6379)
 
 p = r.pubsub()
 
