@@ -15,7 +15,7 @@ r = redis.Redis(host="redis", port=6379, db=0)
 
 p = r.pubsub()
 
-p.subscribe("my-channel-1")
+p.subscribe("my-sync-channel")
 
 while True:
     message = p.get_message()

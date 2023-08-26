@@ -18,11 +18,8 @@ async def reader(channel: redis.client.PubSub):
 async def main():
     r = redis.from_url("redis://redis:6379")
     async with r.pubsub() as pubsub:
-        await pubsub.subscribe("channel:1", "channel:2")
-
-        future = asyncio.create_task(reader(pubsub))
-
-        await future
+        await pubsub.subscribe("my-async-channel")
+        await asyncio.create_task(reader(pubsub))
 
 
 if __name__ == "__main__":
