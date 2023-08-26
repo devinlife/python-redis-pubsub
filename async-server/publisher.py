@@ -12,8 +12,8 @@ async def async_pub():
             while True:
                 await r.publish("channel:1", "Hello")
                 await asyncio.sleep(3)
-        except redis.RedisError as e:
-            print(f"Redis error occurred: {e}")
+        except redis.RedisError as error:
+            print(f"Redis error occurred: {error}")
 
 
 if __name__ == "__main__":
